@@ -1,0 +1,36 @@
+name: Funding Sync
+
+on:
+  sponsorship:
+    types: [created, edited]
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Funding Sync"]
+    types: [completed]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log sponsor event
+        run: |
+          echo "Sponsor: ${{ github.event.sender.login }}"
+          echo "Action: ${{ github.event.action }}"
+          echo "Tier: ${{ github.event.sponsorship.tier.name }}"
+          echo "Amount: ${{ github.event.sponsorship.tier.monthly_price_in_cents }} cents"
+
+      - name: Update sponsor ledger
+        run: |
+          mkdir -p .gitdigital
+          echo "$(date) - ${{ github.event.sender.login }} - ${{ github.event.sponsorship.tier.name }}" >> .gitdigital/sponsors.log
+
+      - name: Trigger Funding Engine App
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d '{"event":"funding_sync","sponsor":"${{ github.event.sender.login }}"}' \
+            https://YOUR-WEBHOOK-URL/funding
