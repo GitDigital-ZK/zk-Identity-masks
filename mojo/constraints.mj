@@ -1,0 +1,40 @@
+=== FILE: mojo/constraints.mj ===
+
+Circuit constraints for identity masks.
+
+struct Circuit:
+var id: Int
+var constraints: Pointer[Constraint]
+
+fn build(predicate: String) -> Circuit:
+# Parse predicate and generate corresponding constraints.
+# Example: "age >= 18" translates to range proof constraints.
+if predicate == "age >= 18":
+return Circuit(1, age_range_constraints(18))
+else if predicate == "country in {840, 124, 276}":
+return Circuit(2, set_membership_constraints([840,124,276]))
+else:
+# Default: equality predicate on full attribute set.
+return Circuit(0, full_equality_constraints())
+
+struct Constraint:
+var type: Int  # 0: range, 1: set membership, 2: linear equation
+var params: Pointer[Int]
+
+fn age_range_constraints(min_age: Int) -> Pointer[Constraint]:
+# Creates constraints that prove an attribute (age) is >= min_age.
+# This is a stub.
+var constraints = Pointer[Constraint].alloc(1)
+constraints[0] = Constraint(0, Pointer[Int].alloc(1).set(0, min_age))
+return constraints
+
+fn set_membership_constraints(allowed: Pointer[Int]) -> Pointer[Constraint]:
+# Creates constraints that prove an attribute is in a set.
+var constraints = Pointer[Constraint].alloc(1)
+constraints[0] = Constraint(1, allowed)
+return constraints
+
+fn full_equality_constraints() -> Pointer[Constraint]:
+# Proves that the full attribute set matches a commitment.
+return Pointer[Constraint].alloc(0)  # handled implicitly
+
