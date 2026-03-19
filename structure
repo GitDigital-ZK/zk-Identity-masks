@@ -1,0 +1,138 @@
+
+---
+
+⚡ How Zig + Mojo Fit Into Your Identity‑Mask Repo
+
+🧱 Zig → Verifier, Registry, and Low‑Level Crypto
+Zig is perfect for:
+
+- High‑performance Solana‑style verifiers  
+- WASM modules for mask validation  
+- Low‑level hashing, commitments, and serialization  
+- Memory‑safe, C‑interop identity primitives  
+- Replacing Rust for certain lightweight modules  
+
+`
+zk-identity-masks/
+└── zig/
+    ├── mask_verifier.zig
+    ├── mask_registry.zig
+    ├── hash.zig
+    ├── serialization.zig
+    └── README.md
+`
+
+Zig gives you deterministic, audit‑friendly, low‑level identity logic — perfect for your governance‑grade identity masks.
+
+---
+
+🔥 Mojo → Circuits, Provers, and AI‑Optimized Mask Logic
+Mojo is your prover engine and AI‑accelerated identity layer.
+
+Use Mojo for:
+
+- Identity‑mask circuits  
+- Constraint systems  
+- FFT/MSM acceleration  
+- Prover pipelines  
+- AI‑assisted mask generation  
+- GPU‑accelerated identity transformations  
+
+Where Mojo belongs in your repo:
+
+`
+zk-identity-masks/
+└── mojo/
+    ├── identity_mask.mj
+    ├── prover.mj
+    ├── constraints.mj
+    ├── maskaioptimizer.mj
+    └── README.md
+`
+
+Mojo becomes the brain of your identity‑mask system.
+
+---
+
+🧬 Updated Missing‑Files List (Now Including Zig + Mojo)
+
+Here is the corrected, expanded, and final missing‑files list for your repo — now aligned with your new language direction.
+
+---
+
+1. Identity‑Layer Core (Missing)
+
+| File | Purpose |
+|------|---------|
+| identity-mask-spec.md | Defines mask structure, fields, lifecycle. |
+| identity-mask-types.ts | Types for masks, proofs, attributes. |
+| identity-mask-registry.md | Rules for issuance, revocation, versioning. |
+| identity-mask-flow.png | Visual flow of mask creation → proof → verification. |
+
+---
+
+2. ZK Proof Layer (Missing)
+
+Mojo
+| File | Purpose |
+|------|---------|
+| mojo/identity_mask.mj | Core identity‑mask circuit. |
+| mojo/prover.mj | Prover pipeline. |
+| mojo/constraints.mj | Constraint system. |
+| mojo/maskaioptimizer.mj | AI‑accelerated mask logic. |
+
+Zig
+| File | Purpose |
+|------|---------|
+| zig/mask_verifier.zig | Verifier logic. |
+| zig/mask_registry.zig | Registry logic. |
+| zig/hash.zig | Hashing primitives. |
+| zig/serialization.zig | Serialization for masks. |
+
+---
+
+3. Governance & Identity (Missing)
+
+| File | Purpose |
+|------|---------|
+| IDENTITY.md | Identity‑mask philosophy. |
+| GOVERNANCE.md | Issuance, revocation, authority rules. |
+| SECURITY.md | Threat model. |
+| VERSIONING.md | Mask versioning rules. |
+| DISCLOSURES.md | Transparent disclosures. |
+| BANNER.md | Identity banner. |
+| BADGES.md | Badge wall. |
+
+---
+
+4. SDK Layer (Missing)
+
+| File | Purpose |
+|------|---------|
+| sdk/index.ts | Entry point. |
+| sdk/mask.ts | Mask creation/update. |
+| sdk/proofs.ts | Proof generation/verification. |
+| sdk/registry.ts | Registry interactions. |
+
+---
+
+5. Documentation (Missing)
+
+| File | Purpose |
+|------|---------|
+| docs/identity-masks-overview.md | High‑level explanation. |
+| docs/api.md | SDK API docs. |
+| docs/examples/create-mask.ts | Example script. |
+| docs/examples/verify-mask.ts | Example script. |
+
+---
+
+6. Tests (Missing)
+
+| File | Purpose |
+|------|---------|
+| tests/mask.test.ts | Mask logic tests. |
+| tests/proofs.test.ts | ZK proof tests. |
+| tests/registry.test.ts | Registry tests. |
+
+---
