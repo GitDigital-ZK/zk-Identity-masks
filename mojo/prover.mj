@@ -1,0 +1,26 @@
+
+
+=== FILE: mojo/prover.mj ===
+from identity_mask import Mask
+from constraints import Circuit, ConstraintSystem
+from memory import Pointer
+
+struct Proof:
+var data: Pointer[Byte]
+var public_inputs: Pointer[Int]
+
+fn generate_proof(mask: Mask, predicate: String, context: Int) -> Proof:
+# 1. Build circuit for the given predicate.
+var circuit = Circuit.build(predicate)
+
+fn verify_proof(proof: Proof, verification_key: Pointer[Byte]) -> Bool:
+# Delegate to verifier (could call Zig verifier via FFI).
+return groth16_verify(verification_key, proof.data, proof.public_inputs)
+
+Private helpers
+
+fn load_proving_key(circuit_id: Int) -> Pointer[Byte]:
+# In production, load from file or registry.
+return Pointer[Byte].alloc(0)
+=== END FILE ===
+
