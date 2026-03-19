@@ -1,60 +1,46 @@
-# Security Policy
+=== FILE: SECURITY.md ===
 
-## 🔒 Supported Versions
+Security Policy
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | ✅ Active support  |
-| 0.x.x   | ⚠️ Security fixes only |
+Supported Versions
 
-## 🚨 Reporting a Vulnerability
+We release security updates for the following versions:
 
-**DO NOT** create a public GitHub issue for security vulnerabilities.
+Version Supported
+1.x :white_check_mark:
+< 1.0 :x:
 
-### Reporting Process:
-1. **Email**: security@gitdigital.com
-2. **Encrypt**: Use our PGP key (available on website)
-3. **Include**: Detailed description and steps to reproduce
-4. **Response**: We acknowledge within 24 hours, provide timeline within 72 hours
+Reporting a Vulnerability
 
-### What to Expect:
-- We investigate and confirm the vulnerability
-- We develop a fix in a private repository
-- We release a security advisory and patch
-- We credit you (unless you prefer anonymity)
+We take the security of zk-Identity-masks seriously. If you believe you have found a security vulnerability, please report it to us as described below.
 
-## 🛡️ Security Best Practices
+Please do not report security vulnerabilities through public GitHub issues.
 
-### For Users:
-1. **API Keys**: Rotate keys every 90 days
-2. **Environment Variables**: Never commit to repositories
-3. **Dependencies**: Keep all packages updated
-4. **Monitoring**: Set up alerts for suspicious activity
+Instead, send an email to security@zkidentitymasks.io (if this were a real project, use a real address). You should receive a response within 48 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
 
-### For Developers:
-1. **Code Review**: All changes require security review
-2. **Dependencies**: Audit with `npm audit` weekly
-3. **Secrets**: Use secret management tools
-4. **Access Control**: Principle of least privilege
+To help us understand and fix the issue quickly, please include:
 
-## 📅 Security Updates
-- **Monthly**: Dependency updates and security patches
-- **Quarterly**: Full security review
-- **Annually**: Third-party security audit
+· Type of issue (e.g., buffer overflow, cryptographic flaw, logic error)
+· Full paths of source file(s) related to the issue
+· The location of the affected source code (tag/branch/commit or direct URL)
+· Any special configuration required to reproduce the issue
+· Step-by-step instructions to reproduce the issue
+· Proof-of-concept or exploit code (if possible)
+· Impact of the issue, including how an attacker might exploit it
 
-## 🏆 Bug Bounty Program
-We offer bounties for responsibly disclosed vulnerabilities:
+We will respond to your report and keep you informed of the progress towards a fix and release. We may ask for additional information or guidance.
 
-| Severity | Bounty Range |
-|----------|--------------|
-| Critical | $5,000 - $10,000 |
-| High     | $1,000 - $5,000  |
-| Medium   | $500 - $1,000    |
-| Low      | $100 - $500      |
+Disclosure Policy
 
-**Scope**: All code in this repository and associated infrastructure.
+When we receive a security bug report, we will:
 
-## 🔗 Additional Resources
-- [Security Documentation](./docs/SECURITY_GUIDE.md)
-- [Audit Reports](./audits/)
-- [Dependency Dashboard](https://github.com/Gitdigital-products/solana-kyc-compliance-sdk/security/dependabot)
+· Confirm the problem and determine the affected versions.
+· Audit code to find any potential similar problems.
+· Prepare fixes for all supported versions and release them as soon as possible.
+
+Comments on This Policy
+
+If you have suggestions on how to improve this process, please submit a pull request or open an issue.
+~~
+
+
