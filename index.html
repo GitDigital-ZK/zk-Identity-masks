@@ -1,101 +1,323 @@
-# Main Content
-<nav class="border-b border-slate-800 p-4 sticky top-0 bg-slate-900/80 backdrop-blur-md z-50">
-    <div class="container mx-auto flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 bg-gradient-to-tr from-purple-600 to-green-400 rounded-lg"></div>
-            <span class="text-xl font-bold tracking-tight">Solana <span class="gradient-text">KYC SDK</span></span>
-        </div>
-        <div class="hidden md:flex space-x-6 text-sm font-medium">
-            <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk/tree/main/docs" class="hover:text-green-400 transition">Docs</a>
-            <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk/tree/main/examples" class="hover:text-green-400 transition">Examples</a>
-            <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk/blob/main/SECURITY.md" class="hover:text-green-400 transition">Security</a>
-        </div>
-        <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk" class="bg-white text-slate-900 px-4 py-2 rounded-full text-sm font-bold hover:bg-green-400 transition">
-            <i class="fab fa-github mr-2"></i>View Code
-        </a>
-    </div>
-</nav>
-
-<section class="container mx-auto px-4 py-12">
-    <h2 class="text-2xl font-bold mb-8 italic text-slate-500">Project Resources</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk/blob/main/CONTRIBUTING.md" class="p-4 border border-slate-800 rounded-xl hover:border-purple-500 transition group">
-            <h4 class="font-bold group-hover:text-purple-400">Contributing</h4>
-            <p class="text-xs text-slate-500">Learn how to submit PRs</p>
-        </a>
-        <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk/issues" class="p-4 border border-slate-800 rounded-xl hover:border-red-500 transition group">
-            <h4 class="font-bold group-hover:text-red-400">Report Bugs</h4>
-            <p class="text-xs text-slate-500">Open an issue on GitHub</p>
-        </a>
-        <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk/releases" class="p-4 border border-slate-800 rounded-xl hover:border-green-400 transition group">
-            <h4 class="font-bold group-hover:text-green-400">Releases</h4>
-            <p class="text-xs text-slate-500">View version history</p>
-        </a>
-        <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk/blob/main/LICENSE" class="p-4 border border-slate-800 rounded-xl hover:border-blue-400 transition group">
-            <h4 class="font-bold group-hover:text-blue-400">License</h4>
-            <p class="text-xs text-slate-500">MIT Open Source</p>
-        </a>
-    </div>
-</section>
-
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana KYC Compliance SDK</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>zk-Identity-masks · Privacy-preserving identity masks</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #333; line-height: 1.6; min-height: 100vh; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; padding: 4rem 1rem; color: white; }
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 800; }
-        header p { font-size: 1.4rem; max-width: 700px; margin: 0 auto 2rem; opacity: 0.9; }
-        .btn { display: inline-block; background: #00d084; color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: all 0.3s ease; border: none; cursor: pointer; }
-        .btn:hover { background: #00b874; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .btn-secondary { background: transparent; border: 2px solid white; margin-left: 15px; }
-        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
-        main { background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); margin-top: -30px; position: relative; }
-        section { margin-bottom: 3rem; }
-        h2 { color: #444; border-bottom: 3px solid #764ba2; padding-bottom: 0.7rem; margin-bottom: 1.5rem; font-size: 2.2rem; }
-        h3 { color: #667eea; margin: 1.5rem 0 0.8rem; font-size: 1.5rem; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .feature-card { background: #f8f9ff; padding: 2rem; border-radius: 15px; border-left: 5px solid #667eea; }
-        .feature-card i { font-size: 2.5rem; color: #667eea; margin-bottom: 1rem; }
-        code, pre { background: #f4f4f4; padding: 0.2rem 0.6rem; border-radius: 5px; font-family: 'Courier New', monospace; }
-        pre { padding: 1.5rem; overflow-x: auto; margin: 1rem 0; }
-        footer { text-align: center; padding: 2rem; color: white; opacity: 0.8; margin-top: 2rem; }
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            .btn { display: block; width: 100%; margin-bottom: 1rem; }
-            .btn-secondary { margin-left: 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 1.25rem;
+            color: #334155;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .badges {
+            margin: 1.5rem 0;
+        }
+        .badges img {
+            height: 20px;
+            margin: 0 4px;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.2s;
+        }
+        .tab-button:hover {
+            color: #0f172a;
+            background: #f1f5f9;
+        }
+        .tab-button.active {
+            color: #2563eb;
+            border-bottom: 3px solid #2563eb;
+            background: transparent;
+        }
+        .tab-pane {
+            display: none;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+        code {
+            font-family: inherit;
+        }
+        .wiki-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .wiki-link {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .wiki-link:hover {
+            background: #e2e8f0;
+        }
+        .wiki-link span {
+            display: block;
+            font-size: 0.875rem;
+            color: #475569;
+            margin-top: 0.25rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: #64748b;
+            font-size: 0.875rem;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Solana KYC Compliance SDK</h1>
-            <p>A robust developer toolkit to integrate seamless Know Your Customer (KYC) and Anti-Money Laundering (AML) checks directly into your Solana applications. Ensure regulatory compliance with minimal friction.</p>
-            <a href="#get-started" class="btn"><i class="fas fa-rocket"></i> Get Started</a>
-            <a href="https://github.com/gitdigital-products/solana-kyc-compliance-sdk" class="btn btn-secondary" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+            <h1>zk-Identity-masks</h1>
+            <div class="subtitle">Privacy-preserving identity masks for selective attribute disclosure</div>
+            <div class="badges">
+                <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT">
+                <img src="https://img.shields.io/github/v/release/zk-Identity-masks?include_prereleases" alt="release">
+                <img src="https://img.shields.io/github/actions/workflow/status/zk-Identity-masks/ci.yml?branch=main" alt="build">
+            </div>
         </header>
 
-        <main>
-            <section id="overview">
-                <h2>Overview</h2>
-                <p>This SDK simplifies the complex process of embedding regulatory compliance into decentralized applications (dApps) on the Solana blockchain. It provides a unified interface for identity verification, risk assessment, and compliance reporting, allowing you to focus on building your core product.</p>
-            </section>
+        <div class="card">
+            <h2 style="margin-bottom: 1rem;">Code examples</h2>
+            <div class="tabs" id="tabs">
+                <button class="tab-button active" onclick="switchTab('javascript')">JavaScript (Browser)</button>
+                <button class="tab-button" onclick="switchTab('nodejs')">Node.js</button>
+                <button class="tab-button" onclick="switchTab('python')">Python</button>
+                <button class="tab-button" onclick="switchTab('rust')">Rust</button>
+            </div>
 
-            <section id="features">
-                <h2>Core Features</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <i class="fas fa-user-check"></i>
-                        <h3>Identity Verification</h3>
-                        <p>Integrate with leading providers for document checks, liveness detection, and biometric verification. Store results as on-chain attestations.</p>
-                    </div>
+            <!-- JavaScript (Browser) -->
+            <div id="javascript" class="tab-pane active">
+                <pre><code class="language-javascript">import { createMask, RegistryClient } from 'zk-identity-masks-sdk';
+
+// Create a mask for age 25 and country US
+const age = new Uint8Array(32); age[0] = 25;
+const country = new Uint8Array(32); country[0] = 840;
+const mask = createMask([age, country]);
+
+console.log('Mask commitment:', Buffer.from(mask.getCommitment()).toString('hex'));
+
+// Generate a proof that age >= 18
+const proof = await mask.createProof('age >= 18', new Uint8Array(32));
+
+// Verify proof (using Zig verifier via WASM)
+const isValid = await verifyProof(proof);
+console.log('Proof valid:', isValid);</code></pre>
+            </div>
+
+            <!-- Node.js -->
+            <div id="nodejs" class="tab-pane">
+                <pre><code class="language-javascript">const { createMask, RegistryClient } = require('zk-identity-masks-sdk');
+
+async function main() {
+  const age = Buffer.alloc(32); age[0] = 25;
+  const country = Buffer.alloc(32); country[0] = 840;
+  const mask = createMask([age, country]);
+
+  // Register on Solana devnet
+  const registry = new RegistryClient({ rpcUrl: 'https://api.devnet.solana.com' });
+  const owner = Buffer.alloc(32); // your public key
+  const expiry = Math.floor(Date.now() / 1000) + 365*24*3600;
+  const tx = await registry.registerMask(mask.getCommitment(), owner, expiry);
+  console.log('Registration tx:', tx);
+}
+
+main();</code></pre>
+            </div>
+
+            <!-- Python -->
+            <div id="python" class="tab-pane">
+                <pre><code class="language-python"># Example using the Python binding (requires `pip install zk-identity-masks`)
+from zk_identity_masks import Mask, RegistryClient
+
+# Create mask
+age = bytearray(32); age[0] = 25
+country = bytearray(32); country[0] = 840
+mask = Mask([age, country])
+
+print(f"Commitment: {mask.commitment.hex()}")
+
+# Generate proof
+proof = mask.create_proof("age >= 18", b"context")
+print("Proof generated")
+
+# Verify (calls Zig verifier via FFI)
+is_valid = proof.verify()
+print("Valid:", is_valid)</code></pre>
+            </div>
+
+            <!-- Rust -->
+            <div id="rust" class="tab-pane">
+                <pre><code class="language-rust">use zk_identity_masks::{Mask, RegistryClient};
+
+#[tokio::main]
+async fn main() {
+    let mut age = [0u8; 32];
+    age[0] = 25;
+    let mut country = [0u8; 32];
+    country[0] = 840;
+
+    let mask = Mask::new(vec![age, country], None);
+    println!("Commitment: {}", hex::encode(mask.commitment()));
+
+    // Generate proof
+    let proof = mask.create_proof("age >= 18", &[0u8; 32]).await;
+    println!("Proof: {:?}", proof);
+
+    // Verify using Zig verifier
+    let valid = proof.verify().await;
+    println!("Valid: {}", valid);
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-bottom: 1rem;">📚 Wiki & Documentation</h2>
+            <div class="wiki-links">
+                <a href="#" class="wiki-link">
+                    Getting Started
+                    <span>Create your first mask</span>
+                </a>
+                <a href="#" class="wiki-link">
+                    API Reference
+                    <span>Full SDK documentation</span>
+                </a>
+                <a href="#" class="wiki-link">
+                    Mask Registry
+                    <span>On-chain registration & revocation</span>
+                </a>
+                <a href="#" class="wiki-link">
+                    Circuit Specs
+                    <span>Predicates and constraints</span>
+                </a>
+                <a href="#" class="wiki-link">
+                    Security & Audits
+                    <span>Formal verification and reports</span>
+                </a>
+                <a href="#" class="wiki-link">
+                    FAQ
+                    <span>Common questions</span>
+                </a>
+                <a href="#" class="wiki-link">
+                    Contributing
+                    <span>How to get involved</span>
+                </a>
+                <a href="#" class="wiki-link">
+                    Release Notes
+                    <span>Changelog and versions</span>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 zk-Identity-masks contributors. Open source under the MIT License.</p>
+            <p style="margin-top: 0.5rem;">⭐️ Star us on <a href="#">GitHub</a> | Join our <a href="#">Discord</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            // Hide all panes
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            // Deactivate all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Show selected pane and activate button
+            document.getElementById(tabId).classList.add('active');
+            // Find the button that corresponds (by text content rough match - simpler: use dataset)
+            // We'll just activate based on index; for simplicity, we set active by triggering click on button
+            // But we have the buttons with onclick; we can just set active class manually.
+            // Better: loop buttons and match tabId to expected text.
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                const btnText = btn.textContent.trim().toLowerCase();
+                if (btnText.includes(tabId) || (tabId === 'nodejs' && btnText.includes('node'))) {
+                    btn.classList.add('active');
+                }
+            });
+            // Re-run syntax highlighting for new active tab
+            document.querySelectorAll('#tabs + pre code').forEach(block => {
+                hljs.highlightBlock(block);
+            });
+        }
+    </script>
+</body>
+</html>                    </div>
                     <div class="feature-card">
                         <i class="fas fa-shield-alt"></i>
                         <h3>Risk Scoring</h3>
@@ -138,7 +360,7 @@ console.log(`KYC Status: ${status}`);</code></pre>
         </main>
 
         <footer>
-            <p>© 2025 GitDigital Products. All rights reserved.</p>
+            <p>© 2026 GitDigital Products. All rights reserved.</p>
             <p>This SDK is provided for integration purposes. Developers are responsible for ensuring full regulatory compliance in their specific jurisdictions.</p>
         </footer>
     </div>
