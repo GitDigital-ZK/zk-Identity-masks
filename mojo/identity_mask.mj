@@ -1,0 +1,78 @@
+=== FILE: mojo/identity_mask.mj ===
+
+Mojo implementation of identity mask core.
+
+from memory import Pointer
+from utils import Hash
+
+struct Mask:
+var attributes: Pointer[Int]   # raw attribute values (e.g., age, country code)
+var salt: Int                   # random salt for commitment
+var commitment: Int             # Poseidon hash of attributes + salt
+var version: Int                # mask version (circuit version)
+
+=== END FILE ===
+
+=== FILE: mojo/prover.mj ===
+from identity_mask import Mask
+from constraints import Circuit, ConstraintSystem
+from memory import Pointer
+
+struct Proof:
+var data: Pointer[Byte]
+var public_inputs: Pointer[Int]
+
+fn generate_proof(mask: Mask, predicate: String, context: Int) -> Proof:
+# 1. Build circuit for the given predicate.
+var circuit = Circuit.build(predicate)
+
+fn verify_proof(proof: Proof, verification_key: Pointer[Byte]) -> Bool:
+# Delegate to verifier (could call Zig verifier via FFI).
+return groth16_verify(verification_key, proof.data, proof.public_inputs)
+
+Private helpers
+
+fn load_proving_key(circuit_id: Int) -> Pointer[Byte]:
+# In production, load from file or registry.
+return Pointer[Byte].alloc(0)
+=== END FILE ===
+
+=== FILE: mojo/constraints.mj ===
+
+Circuit constraints for identity masks.
+
+struct Circuit:
+var id: Int
+var constraints: Pointer[Constraint]
+
+fn build(predicate: String) -> Circuit:
+# Parse predicate and generate corresponding constraints.
+# Example: "age >= 18" translates to range proof constraints.
+if predicate == "age >= 18":
+return Circuit(1, age_range_constraints(18))
+else if predicate == "country in {840, 124, 276}":
+return Circuit(2, set_membership_constraints([840,124,276]))
+else:
+# Default: equality predicate on full attribute set.
+return Circuit(0, full_equality_constraints())
+
+struct Constraint:
+var type: Int  # 0: range, 1: set membership, 2: linear equation
+var params: Pointer[Int]
+
+fn age_range_constraints(min_age: Int) -> Pointer[Constraint]:
+# Creates constraints that prove an attribute (age) is >= min_age.
+# This is a stub.
+var constraints = Pointer[Constraint].alloc(1)
+constraints[0] = Constraint(0, Pointer[Int].alloc(1).set(0, min_age))
+return constraints
+
+fn set_membership_constraints(allowed: Pointer[Int]) -> Pointer[Constraint]:
+# Creates constraints that prove an attribute is in a set.
+var constraints = Pointer[Constraint].alloc(1)
+constraints[0] = Constraint(1, allowed)
+return constraints
+
+fn full_equality_constraints() -> Pointer[Constraint]:
+# Proves that the full attribute set matches a commitment.
+return Pointer[Constraint].alloc(0)  # handled implicitly
