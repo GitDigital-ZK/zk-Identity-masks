@@ -1,5 +1,3 @@
-=== FILE: SECURITY.md ===
-
 Security Policy
 
 Supported Versions
@@ -41,6 +39,3 @@ When we receive a security bug report, we will:
 Comments on This Policy
 
 If you have suggestions on how to improve this process, please submit a pull request or open an issue.
-~~
-
-
