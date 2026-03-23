@@ -1,3 +1,12 @@
+```mermaid
+    graph TD;
+    A[User] -->|Submits KYC Info| B(SDK);
+    B -->|Sends Data| C[API];
+    C -->|Validates| D[Database];
+    D -->|Returns Result| C;
+    C -->|Generates Report| E[Report Service];
+    E -->|Delivers Report| A;
+```
 
 <a href='https://ko-fi.com/T6T61WAZYZ' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
