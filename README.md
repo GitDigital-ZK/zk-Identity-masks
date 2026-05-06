@@ -33,7 +33,12 @@ Features
 · AI Optimizer: Optional Mojo module for selecting optimal proving parameters.
 
 Repository Structure
+<a href="https://www.buymeacoffee.com/Rickcreator1987"><img src="https://img.buymeacoffee.com/button-api/?text=Support our Work&emoji=👨‍🏭&slug=Rickcreator1987&button_colour=40DCA5&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
 
+<a href="https://www.buymeacoffee.com/Rickcreator1987"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Laptop&emoji=💻&slug=Rickcreator1987&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
+
+
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Rickcreator1987" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 ```
 .
 ├── zig/          # Zig modules: verifier, registry client, hash, serialization
