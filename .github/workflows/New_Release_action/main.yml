@@ -1,0 +1,10 @@
+            - name: New Release action
+  # You may pin to the exact commit or the version.
+  # uses: theo-code33/create-release-action@7267221cba8060eba01ea0c3168799420fb65e2b
+  uses: theo-code33/create-release-action@v0.3
+  with:
+    # The version of the release
+    version: 
+    # The GitHub token
+    token: 
+          
