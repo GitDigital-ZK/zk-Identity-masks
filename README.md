@@ -1,3 +1,14 @@
+https://cdn.buymeacoffee.com/stream-alerts/bmc-stream-alert-gif.webp
+
+<a href="https://www.buymeacoffee.com/Rickcreator1987"><img src="https://img.buymeacoffee.com/button-api/?text=Support our Work&emoji=👨‍🏭&slug=Rickcreator1987&button_colour=40DCA5&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
+
+<a href="https://www.buymeacoffee.com/Rickcreator1987"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Laptop&emoji=💻&slug=Rickcreator1987&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
+
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="Rickcreator1987" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+https://studio.buymeacoffee.com/stream-alert/page/Rickcreator1987?user_key=93ebad4c-f9cd-4d46-96a6-302ce2a29e03
+
+
+
 ```mermaid
     graph TD;
     A[User] -->|Submits KYC Info| B(SDK);
